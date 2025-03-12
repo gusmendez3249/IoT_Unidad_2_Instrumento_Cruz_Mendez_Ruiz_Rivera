@@ -24,6 +24,8 @@ Juan Gustavo Ángel Cruz Méndez:
 Juan Diego Ruiz Rivera:   
 Juan Gustavo Ángel Cruz Méndez: 
 
-## Capturas del curso JavaScript
+## Captura del curso JavaScript
 Juan Diego Ruiz Rivera:
+
 Juan Gustavo Ángel Cruz Méndez: 
+<img src="https://github.com/user-attachments/assets/9de55289-3e07-44e1-937a-759a64163a31"/>
