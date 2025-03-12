@@ -27,9 +27,3 @@ Juan Gustavo Ángel Cruz Méndez:
 ## Capturas del curso JavaScript
 Juan Diego Ruiz Rivera:
 Juan Gustavo Ángel Cruz Méndez: 
-
-## Soldadura
-Juan Diego Ruiz Rivera: https://drive.google.com/file/d/1sIFaZ6tI02HvUQJNo_UPFAw2K5N9UiQN/view?usp=drive_link
-
-
-Juan Gustavo Ángel Cruz Méndez: https://drive.google.com/drive/folders/1tpFt6mBEdAddgb2OXf93Zt3579ZEcKYv?usp=sharing
