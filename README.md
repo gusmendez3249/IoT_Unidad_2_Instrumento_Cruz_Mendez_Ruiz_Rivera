@@ -1,1 +1,1 @@
-# IoT_Instrumento_De_Evaluaci-n_Cruz_M-ndez_Ruiz_Rivera
+# IoT_Instrumento_Unidad_2_Cruz_Mendez_Ruiz_Rivera
