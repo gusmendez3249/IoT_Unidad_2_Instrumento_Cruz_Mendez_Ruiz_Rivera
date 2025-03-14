@@ -20,11 +20,11 @@
 ---
 
 ## 🔌 Placa de LEDs  
-| **Integrante**                | **Contribución**         |  
-|-------------------------------|--------------------------|  
-| Juan Diego Ruiz Rivera        | *[Descripción pendiente]*|  
-| Juan Gustavo Ángel Cruz Méndez| <img src="https://github.com/user-attachments/assets/29ca6b9f-63c7-4124-acef-431da37fe413" alt="Placa de LEDs" width="300"> [Google Drive](https://drive.google.com/drive/folders/18heTHVRkjm8Xy7GQFJ3Ta7XnWWiWI3UK)|  
 
+| **Integrante**                | **Contribución**                                                                 |
+|-------------------------------|---------------------------------------------------------------------------------|
+| Juan Diego Ruiz Rivera        | *[Descripción pendiente]*                                                       |
+| Juan Gustavo Ángel Cruz Méndez| <img src="https://github.com/user-attachments/assets/29ca6b9f-63c7-4124-acef-431da37fe413" alt="Placa de LEDs" width="300"> <br> [Google Drive](https://drive.google.com/drive/folders/1FQCCkj3sWxHudLUFistyaS6q5fctrjlP?usp=drive_link) |
 ---
 
 ## 🎥 Videos Demostrativos  
