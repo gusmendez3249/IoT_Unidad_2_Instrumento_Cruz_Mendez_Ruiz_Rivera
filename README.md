@@ -30,7 +30,7 @@
 ## 🎥 Videos Demostrativos  
 | **Integrante**                | **Enlace**                                                                 |  
 |-------------------------------|----------------------------------------------------------------------------|  
-| Juan Diego Ruiz Rivera        | *[Enlace pendiente]*                                                      |  
+| Juan Diego Ruiz Rivera        | [Google Drive](https://drive.google.com/drive/folders/1UW0K9HmpOHE_iPm40Tl_pqksy_wOU_Cd?usp=sharing) |  
 | Juan Gustavo Ángel Cruz Méndez| [Google Drive](https://drive.google.com/drive/folders/18heTHVRkjm8Xy7GQFJ3Ta7XnWWiWI3UK) |  
 
 ---
@@ -39,7 +39,7 @@
 
 ### Juan Diego Ruiz Rivera  
 <div align="center">
-  <img src="[URL_DE_LA_CAPTURA_JUAN_DIEGO]" alt="Certificado JavaScript - Juan Diego" width="500" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1)"/>
+  <img src="![image](https://github.com/user-attachments/assets/7e658008-4011-4e76-a1ac-6eb75b6f2b7e)" alt="Certificado JavaScript - Juan Diego" width="500" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1)"/>
   <br>
   <sub><em>🚧 Captura pendiente de actualizar</em></sub>
 </div>
