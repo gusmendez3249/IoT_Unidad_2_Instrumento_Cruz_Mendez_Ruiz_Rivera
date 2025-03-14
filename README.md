@@ -23,7 +23,7 @@
 | **Integrante**                | **Contribución**         |  
 |-------------------------------|--------------------------|  
 | Juan Diego Ruiz Rivera        | *[Descripción pendiente]*|  
-| Juan Gustavo Ángel Cruz Méndez| *[Descripción pendiente]*|  
+| Juan Gustavo Ángel Cruz Méndez| <img src="https://github.com/user-attachments/assets/29ca6b9f-63c7-4124-acef-431da37fe413" alt="Placa de LEDs" width="300">|  
 
 ---
 
