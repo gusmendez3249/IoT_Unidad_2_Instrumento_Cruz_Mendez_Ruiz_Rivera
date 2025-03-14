@@ -46,7 +46,7 @@
 
 ### Juan Gustavo Ángel Cruz Méndez  
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/9de55289-3e07-44e1-937a-759a64163a31" alt="Certificado JavaScript - Juan Gustavo" width="500" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1)"/>
+  <img src="https://github.com/user-attachments/assets/048593d5-f936-4ac6-8a0e-cf8e9617055f" alt="Certificado JavaScript - Juan Gustavo" width="500" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1)"/>
 </div>
 
 ---
