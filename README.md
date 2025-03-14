@@ -40,8 +40,6 @@
 ### Juan Diego Ruiz Rivera  
 <div align="center">
   <img src="https://github.com/user-attachments/assets/7e658008-4011-4e76-a1ac-6eb75b6f2b7e" alt="Certificado JavaScript - Juan Diego" width="500" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1)"/>
-  <br>
-  <sub><em>🚧 Captura pendiente de actualizar</em></sub>
 </div>
 
 ---
