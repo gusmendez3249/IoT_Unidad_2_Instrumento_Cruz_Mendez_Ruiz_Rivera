@@ -18,11 +18,14 @@ Unidad 2.
 
 ## Placa de leds
 Juan Diego Ruiz Rivera: 
+
 Juan Gustavo Ángel Cruz Méndez: 
 
 ## Videos demostrativos (40)
 Juan Diego Ruiz Rivera:   
+
 Juan Gustavo Ángel Cruz Méndez: 
+https://drive.google.com/drive/folders/18heTHVRkjm8Xy7GQFJ3Ta7XnWWiWI3UK?usp=sharing
 
 ## Captura del curso JavaScript
 Juan Diego Ruiz Rivera:
