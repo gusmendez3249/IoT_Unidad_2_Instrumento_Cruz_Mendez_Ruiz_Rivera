@@ -2,6 +2,11 @@
 **Aplicaciones de IoT | AIOT2025**  
 
 --- 
+## Descripción 
+Descripción del Proyecto - Unidad 2: Integración de Raspberry Pi, PostgreSQL y Node-RED para IoT
+
+En esta unidad, exploramos la implementación de un sistema IoT integral utilizando una Raspberry Pi como núcleo de procesamiento, PostgreSQL para gestión de datos y Node-RED como plataforma de flujos visuales. El objetivo principal fue probar y registrar el funcionamiento de diversos sensores y actuadores, integrando sus datos en una arquitectura escalable y automatizada.
+
 
 ## 👥 Autores  
 | **Nombre**              | **Apellido Paterno** | **Apellido Materno** |  
