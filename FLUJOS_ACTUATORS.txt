@@ -1,0 +1,4126 @@
+//FLUJO KY-016  ID 2
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(2, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+
+
+//FLUJO KY-008 ID 3
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(3, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+//FLUJO KY-011 ID 4
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(4, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+//FLUJO KY-012 ID 5
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(5, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+//FLUJO KY-006 ID 6
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(6, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+
+//FLUJO KY-019 ID 7
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(7, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+
+//FLUJO KY-018 ID 8
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(8, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+
+
+//FLUJO KY-023 ID 9
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(9, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+//FLUJO KY-022 ID 10
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(10, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+//FLUJO KY-021 ID 11
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(11, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+
+//FLUJO KY-025 ID 12
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(12, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+
+//FLUJO KY-029 ID 13
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(13, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+//FLUJO KY-034 ID 14
+
+
+[
+    {
+        "id": "54ff268957d5c33d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284efdca865e2f3e",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "82576c652678118c"
+            ]
+        ]
+    },
+    {
+        "id": "1b85c2a7fa818a6f",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "50ab0cd04633b52e"
+            ]
+        ]
+    },
+    {
+        "id": "82576c652678118c",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "INSERT INTO actuator_details (actuator_id, user_id, value) VALUES(14, 1, '{{{msg.payload}}}');",
+        "postgreSQLConfig": "73fbbf8e5963b585",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "aa33b954709c056d"
+            ]
+        ]
+    },
+    {
+        "id": "aa33b954709c056d",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50ab0cd04633b52e",
+        "type": "postgresql",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "query": "SELECT * FROM actuator_details;",
+        "postgreSQLConfig": "bd51076e1e29c150",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "0af923757d9ca353"
+            ]
+        ]
+    },
+    {
+        "id": "0af923757d9ca353",
+        "type": "ui_table",
+        "z": "54ff268957d5c33d",
+        "group": "0125660a5e290638",
+        "name": "Mercurio",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 580,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7321b3fef9551edb",
+        "type": "mqtt in",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ac928b2894b9d246",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "51316c9ed13d2dbd"
+            ]
+        ]
+    },
+    {
+        "id": "8c3cc6df192a75d6",
+        "type": "mqtt out",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "topic": "cm/trabajo/proximidad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ac928b2894b9d246",
+        "x": 420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f306fc67b4fce6a",
+        "type": "inject",
+        "z": "54ff268957d5c33d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c3cc6df192a75d6"
+            ]
+        ]
+    },
+    {
+        "id": "51316c9ed13d2dbd",
+        "type": "debug",
+        "z": "54ff268957d5c33d",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ac928b2894b9d246",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.217",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "73fbbf8e5963b585",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bd51076e1e29c150",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "aiot",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "utng",
+        "userFieldType": "str",
+        "password": "1234",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "0125660a5e290638",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "49ecce02d001e6f2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49ecce02d001e6f2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
